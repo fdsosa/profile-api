@@ -6,10 +6,11 @@ var server = express();
 var path = require('path');
 var port = process.env.PORT || 3000;
 
-var mongoUrl = MONGO_URI || 'mongodb://localhost:27017/';
-var dbname = DB_NAME || 'proyect-cv';
+var env = process.env.ENV || 'DEV';
 
-server.use(express.static(path.join(__dirname, folderBuild)));
+var mongoUrl =  env == 'PROD' ? MONGO_URI : 'mongodb://localhost:27017/';
+var dbname = env == 'PROD' ? DB_NAME : 'proyect-cv';
+
 server.use(cors());
 
 function getCollection(collectionName) {
