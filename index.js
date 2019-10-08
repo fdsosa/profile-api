@@ -9,7 +9,7 @@ var port = process.env.PORT || 3000;
 var env = process.env.ENV || 'DEV';
 
 var mongoUrl =  env == 'PROD' ? process.env.MONGO_URI : 'mongodb://localhost:27017/';
-var dbname = env == 'PROD' ? process.envDB_NAME : 'proyect-cv';
+var dbname = env == 'PROD' ? process.env.DB_NAME : 'proyect-cv';
 
 server.use(cors());
 
